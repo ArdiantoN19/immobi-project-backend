@@ -4,7 +4,16 @@ import Department from "./Department";
 import Karyawan from "./Karyawan";
 import { JabatanAttributes, JabatanCreationAttributes } from "../types/jabatan";
 
-class Jabatan extends Model<JabatanAttributes, JabatanCreationAttributes> {}
+class Jabatan
+  extends Model<JabatanAttributes, JabatanCreationAttributes>
+  implements JabatanAttributes
+{
+  public id!: number;
+  public id_department!: number;
+  public nama_jabatan!: string;
+  public created_at!: Date;
+  public updated_at!: Date;
+}
 
 Jabatan.init(
   {

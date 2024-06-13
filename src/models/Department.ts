@@ -6,10 +6,10 @@ import {
   DepartmentCreationAttributes,
 } from "../types/department";
 
-class Department extends Model<
-  DepartmentAttributes,
-  DepartmentCreationAttributes
-> {
+class Department
+  extends Model<DepartmentAttributes, DepartmentCreationAttributes>
+  implements DepartmentAttributes
+{
   public id!: number;
   public nama_department!: string;
   public created_at!: Date;

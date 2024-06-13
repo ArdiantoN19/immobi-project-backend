@@ -2,13 +2,13 @@ import { DataTypes, Model } from "sequelize";
 import sequelize from "../utils/database";
 import Jabatan from "./Jabatan";
 import {
-  KaryawanAttributtes,
+  KaryawanAttributes,
   KaryawanCreationAttributes,
 } from "../types/karyawan";
 
 class Karyawan
-  extends Model<KaryawanAttributtes, KaryawanCreationAttributes>
-  implements KaryawanAttributtes
+  extends Model<KaryawanAttributes, KaryawanCreationAttributes>
+  implements KaryawanAttributes
 {
   public id!: number;
   public id_jabatan!: number;
