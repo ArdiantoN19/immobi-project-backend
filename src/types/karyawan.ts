@@ -6,6 +6,8 @@ export interface KaryawanAttributes {
   name: string;
   age: number;
   gender: string;
+  tanggal_lahir: Date;
+  alamat: string;
 }
 
 export interface KaryawanCreationAttributes

@@ -66,12 +66,16 @@ app.get("/*", (req: Request, res: Response) => {
 const { APP_PORT, APP_HOST } = process.env as Record<string, any>;
 
 // SYNC DATABASE and START SERVER
-syncDatabase()
-  .then(() => {
-    app.listen(APP_PORT, () =>
-      console.log(`Server running on http://${APP_HOST}:${APP_PORT}`)
-    );
-  })
-  .catch((error) => {
-    console.log("Failed to connect to database", error);
-  });
+// syncDatabase()
+//   .then(() => {
+//     app.listen(APP_PORT, () =>
+//       console.log(`Server running on http://${APP_HOST}:${APP_PORT}`)
+//     );
+//   })
+//   .catch((error) => {
+//     console.log("Failed to connect to database", error);
+//   });
+
+app.listen(APP_PORT, () =>
+  console.log(`Server running on http://${APP_HOST}:${APP_PORT}`)
+);

@@ -15,6 +15,8 @@ class Karyawan
   public name!: string;
   public age!: number;
   public gender!: string;
+  public tanggal_lahir!: Date;
+  public alamat!: string;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -43,6 +45,14 @@ Karyawan.init(
     },
     gender: {
       type: DataTypes.STRING(2),
+      allowNull: false,
+    },
+    tanggal_lahir: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    alamat: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
   },

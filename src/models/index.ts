@@ -9,6 +9,7 @@ const models = {
   Karyawan,
 };
 
+// SYNC DATABASE AVOID WHEN PRODUCTION
 const syncDatabase = async () => {
   await sequelize.sync({ force: true });
   console.log("Database synced");
