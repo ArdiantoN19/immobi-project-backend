@@ -15,8 +15,9 @@ class Karyawan
   public name!: string;
   public age!: number;
   public gender!: number;
-  public readonly created_at!: Date;
-  public readonly updated_at!: Date;
+
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
 }
 
 Karyawan.init(
@@ -42,14 +43,6 @@ Karyawan.init(
     },
     gender: {
       type: DataTypes.SMALLINT,
-      allowNull: false,
-    },
-    created_at: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    updated_at: {
-      type: DataTypes.DATE,
       allowNull: false,
     },
   },

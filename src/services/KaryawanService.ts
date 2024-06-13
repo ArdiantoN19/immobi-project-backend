@@ -1,4 +1,4 @@
-import Karyawan from "../models/Karyawan";
+import { models } from "../models";
 import {
   IKaryawanService,
   KaryawanCreationAttributes,
@@ -31,6 +31,6 @@ class KaryawanService implements IKaryawanService {
   }
 }
 
-const karyawanService = new KaryawanService(Karyawan);
+const karyawanService = new KaryawanService(models.Karyawan);
 
 export default karyawanService;

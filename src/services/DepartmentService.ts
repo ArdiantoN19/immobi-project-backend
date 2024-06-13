@@ -1,5 +1,6 @@
-import Department from "../models/Department";
+import { models } from "../models";
 import {
+  DepartmentAttributes,
   DepartmentCreationAttributes,
   IDepartmentService,
 } from "../types/department";
@@ -10,30 +11,30 @@ class DepartmentService implements IDepartmentService {
     this.DepartmentModel = DepartmentModel;
   }
 
-  async getDepartments() {
+  async getDepartments(): Promise<DepartmentAttributes[]> {
     return await this.DepartmentModel.findAll();
   }
 
-  async getDepartmentById(id: number) {
+  async getDepartmentById(id: number): Promise<DepartmentAttributes | null> {
     return await this.DepartmentModel.findByPk(id);
   }
 
-  async createDepartment(data: DepartmentCreationAttributes) {
-    return await this.DepartmentModel.create(data);
+  async createDepartment(data: DepartmentCreationAttributes): Promise<void> {
+    await this.DepartmentModel.create(data);
   }
 
   async updateDepartment(
     id: number,
     data: Partial<DepartmentCreationAttributes>
-  ) {
-    return await this.DepartmentModel.update(data, { where: { id } });
+  ): Promise<void> {
+    await this.DepartmentModel.update(data, { where: { id } });
   }
 
-  async deleteDepartment(id: number) {
-    return await this.DepartmentModel.destroy({ where: { id } });
+  async deleteDepartment(id: number): Promise<void> {
+    await this.DepartmentModel.destroy({ where: { id } });
   }
 }
 
-const departmentService = new DepartmentService(Department);
+const departmentService = new DepartmentService(models.Department);
 
 export default departmentService;

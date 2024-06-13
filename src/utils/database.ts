@@ -1,6 +1,9 @@
 import { Sequelize } from "sequelize";
+import * as dotenv from "dotenv";
+dotenv.config();
+
 const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, PGPORT } =
-  process.env as unknown as Record<string, any>;
+  process.env as Record<string, any>;
 
 const sequelize = new Sequelize(PGDATABASE, PGUSER, PGPASSWORD, {
   dialect: "postgres",
@@ -9,6 +12,7 @@ const sequelize = new Sequelize(PGDATABASE, PGUSER, PGPASSWORD, {
   define: {
     freezeTableName: true,
   },
+  // logging: false,
 });
 
 export default sequelize;

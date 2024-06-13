@@ -1,6 +1,5 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../utils/database";
-import Jabatan from "./Jabatan";
 import {
   DepartmentAttributes,
   DepartmentCreationAttributes,
@@ -12,8 +11,9 @@ class Department
 {
   public id!: number;
   public nama_department!: string;
-  public created_at!: Date;
-  public updated_at!: Date;
+
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
 }
 
 Department.init(
@@ -29,21 +29,11 @@ Department.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    created_at: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    updated_at: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
   },
   {
     sequelize,
     modelName: "department",
   }
 );
-
-Department.hasMany(Jabatan, { as: "jabatans" });
 
 export default Department;

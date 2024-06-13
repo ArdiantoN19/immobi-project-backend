@@ -1,4 +1,4 @@
-import Jabatan from "../models/Jabatan";
+import { models } from "../models";
 import { IJabatanService, JabatanCreationAttributes } from "../types/jabatan";
 
 class JabatanService implements IJabatanService {
@@ -28,6 +28,6 @@ class JabatanService implements IJabatanService {
   }
 }
 
-const jabatanService = new JabatanService(Jabatan);
+const jabatanService = new JabatanService(models.Jabatan);
 
 export default jabatanService;

@@ -1,7 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../utils/database";
 import Department from "./Department";
-import Karyawan from "./Karyawan";
 import { JabatanAttributes, JabatanCreationAttributes } from "../types/jabatan";
 
 class Jabatan
@@ -11,8 +10,9 @@ class Jabatan
   public id!: number;
   public id_department!: number;
   public nama_jabatan!: string;
-  public created_at!: Date;
-  public updated_at!: Date;
+
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
 }
 
 Jabatan.init(
@@ -32,14 +32,6 @@ Jabatan.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    created_at: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    updated_at: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
   },
   { sequelize, modelName: "jabatan" }
 );
@@ -47,6 +39,5 @@ Jabatan.init(
 Jabatan.belongsTo(Department, {
   foreignKey: "id_department",
 });
-Jabatan.hasMany(Karyawan);
 
 export default Jabatan;
