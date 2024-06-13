@@ -24,7 +24,7 @@ exports.up = (pgm) => {
       notNull: true,
     },
     gender: {
-      type: "SMALLINT",
+      type: "VARCHAR(2)",
       notNull: true,
     },
     tanggal_lahir: {

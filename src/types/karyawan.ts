@@ -5,7 +5,7 @@ export interface KaryawanAttributes {
   id_jabatan: number;
   name: string;
   age: number;
-  gender: number; // 0 = male, 1 = female
+  gender: string;
 }
 
 export interface KaryawanCreationAttributes

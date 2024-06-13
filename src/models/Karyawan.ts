@@ -14,7 +14,7 @@ class Karyawan
   public id_jabatan!: number;
   public name!: string;
   public age!: number;
-  public gender!: number;
+  public gender!: string;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -42,7 +42,7 @@ Karyawan.init(
       allowNull: false,
     },
     gender: {
-      type: DataTypes.SMALLINT,
+      type: DataTypes.STRING(2),
       allowNull: false,
     },
   },

@@ -1,10 +1,12 @@
 import { Request, Response } from "express";
+import NotFoundError from "../../exceptions/NotFoundError";
 import InvariantError from "../../exceptions/InvariantError";
 import karyawanService from "../../services/KaryawanService";
 import jabatanService from "../../services/JabatanService";
-import NotFoundError from "../../exceptions/NotFoundError";
 
-const createKaryawan = async (req: Request, res: Response) => {
+const updateKaryawan = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
   if (
     !req.body.hasOwnProperty("id_jabatan") ||
     !req.body.hasOwnProperty("name") ||
@@ -17,16 +19,28 @@ const createKaryawan = async (req: Request, res: Response) => {
   }
 
   const { id_jabatan, name, age, gender } = req.body;
+
   const jabatan = await jabatanService.getJabatanById(Number(id_jabatan));
 
   if (!jabatan) {
     throw new NotFoundError("Jabatan not found, please put correct id");
   }
 
-  await karyawanService.createKaryawan({ id_jabatan, name, age, gender });
+  const karyawan = await karyawanService.getKaryawanById(Number(id));
+
+  if (!karyawan) {
+    throw new NotFoundError("Karyawan not found, please put correct id");
+  }
+
+  await karyawanService.updateKaryawan(Number(id), {
+    id_jabatan,
+    name,
+    age,
+    gender,
+  });
   return res
-    .status(201)
-    .json({ status: "success", message: "Karyawan created successfully" });
+    .status(200)
+    .json({ status: "success", message: "Karyawan updated successfully" });
 };
 
-export default createKaryawan;
+export default updateKaryawan;

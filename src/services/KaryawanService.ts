@@ -1,6 +1,7 @@
 import { models } from "../models";
 import {
   IKaryawanService,
+  KaryawanAttributes,
   KaryawanCreationAttributes,
 } from "../types/karyawan";
 
@@ -10,24 +11,27 @@ class KaryawanService implements IKaryawanService {
     this.karyawanModel = karyawanModel;
   }
 
-  async getKaryawans() {
+  async getKaryawans(): Promise<KaryawanAttributes[]> {
     return await this.karyawanModel.findAll();
   }
 
-  async getKaryawanById(id: number) {
+  async getKaryawanById(id: number): Promise<KaryawanAttributes | null> {
     return await this.karyawanModel.findByPk(id);
   }
 
-  async createKaryawan(data: KaryawanCreationAttributes) {
-    return await this.karyawanModel.create(data);
+  async createKaryawan(data: KaryawanCreationAttributes): Promise<void> {
+    await this.karyawanModel.create(data);
   }
 
-  async updateKaryawan(id: number, data: Partial<KaryawanCreationAttributes>) {
-    return await this.karyawanModel.update(data, { where: { id } });
+  async updateKaryawan(
+    id: number,
+    data: Partial<KaryawanCreationAttributes>
+  ): Promise<void> {
+    await this.karyawanModel.update(data, { where: { id } });
   }
 
-  async deleteKaryawan(id: number) {
-    return await this.karyawanModel.destroy({ where: { id } });
+  async deleteKaryawan(id: number): Promise<void> {
+    await this.karyawanModel.destroy({ where: { id } });
   }
 }
 
